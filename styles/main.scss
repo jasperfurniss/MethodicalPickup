@@ -1,0 +1,49 @@
+
+
+
+$primary-font: 'sorts-mill-goudy';
+$primary-color: #23232D;
+$secondary-color: #BBA57B;
+
+
+body {
+  font-family: 'sorts-mill-goudy';
+  font-size: 1.75em;
+  background-color: $primary-color;
+  color: $secondary-color;
+  margin: 0 auto;
+}
+
+
+.js-menu-list {
+  font-family: $primary-font;
+  border: 3px solid $secondary-color;
+}
+
+.js-menu-item-details {
+  font-family: $primary-font;
+  border: 3px dashed $secondary-color;
+}
+
+.js-cart {
+  font-family: $primary-font;
+  border: 3px solid $secondary-color;
+}
+
+img {
+  display: flex;
+  flex: 1;
+}
+
+
+button {
+  font-family: $primary-font;
+  outline: none;
+  background: $secondary-color;
+  font-family: $primary-font;
+  border: 0;
+  color: $primary-color;
+  width: 100px;
+  height: 60px;
+  font-size: .5em;
+}

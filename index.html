@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<!--   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'> -->
+  <script href="use.typekit.net/fww3pmt.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Methodical</title>
+</head>
+<body>
+
+<h1><img src="images/methodical.png" alt="logo"></h1>
+<h2>Our Pick-Up Menu</h2>
+
+<div id="app-container"></div>
+
+<script type="text/template" id="menu-list-template">
+<div class="js-menu-list">
+<ul class="js-menu-item-list">
+  <li>yummy food 1</li>
+  <li>yummy food 2</li>
+  <li>yummy food 3</li>
+  <li>yummy food 4</li>
+</ul>
+</div>
+</script>
+
+<script type="text/template" id="item-details-template">
+<div class="js-menu-item-details">
+<p>This box will show all the details of the selected menuItem.  A fancy drink that will go down smoothly. Yum!</p>
+<form>
+  <button>Add Item</button>
+</form>
+</div>
+</script>
+
+<script type="text/template" id="order-template">
+<div class="js-cart">
+  <p>espresso (yummy food item 1)
+    <form>
+    <button>Remove Item</button>
+    </form>
+  </p>
+<form>
+<button>Submit Pick-Up Order</button>
+</form>
+</div>
+</script>
+
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

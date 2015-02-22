@@ -1,0 +1,35 @@
+body {
+  font-family: 'sorts-mill-goudy';
+  font-size: 1.75em;
+  background-color: #23232D;
+  color: #BBA57B;
+  margin: 0 auto; }
+
+.js-menu-list {
+  font-family: "sorts-mill-goudy";
+  border: 3px solid #BBA57B; }
+
+.js-menu-item-details {
+  font-family: "sorts-mill-goudy";
+  border: 3px dashed #BBA57B; }
+
+.js-cart {
+  font-family: "sorts-mill-goudy";
+  border: 3px solid #BBA57B; }
+
+img {
+  display: flex;
+  flex: 1; }
+
+button {
+  font-family: "sorts-mill-goudy";
+  outline: none;
+  background: #BBA57B;
+  font-family: "sorts-mill-goudy";
+  border: 0;
+  color: #23232D;
+  width: 100px;
+  height: 60px;
+  font-size: .5em; }
+
+/*# sourceMappingURL=main.css.map */
