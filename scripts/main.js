@@ -111,14 +111,7 @@
     },
 
     index: function() {
-      // this.items.fetch();
-      this.menuView = new MenuView();
-      this.menuView.render();
-      // $('#app-container').html(this.indexView.el);
-
-      // this.orderView = new OrderView();
-      // this.orderView.render();
-      // $('#app-container').append(this.orderView.el);
+      this.itemsList.render();
     },
 
     itemDetails: function() {
