@@ -7,37 +7,30 @@
 
   var MenuItemModel = Backbone.Model.extend({
       idAttribute: 'objectId',
-      defaults: {
-        name: '',
-        details: '',
-        price: ''
-      }
   });
 
-  var OrderModel = Backbone.Model.extend({
-      idAttribute: 'objectId',
-      defaults: function(attributes){
-        attributes = attributes || {};
-        return _.defaults(attributes, {
-          items: []
-       });
-      },
-
-      addItem: function(item){
-        this.set('items', this.get('items').concat([item.toJSON()]));
-      },
-
-      totalPrice: function(){
-        return this.get('items').reduce(function(acum, item) {
-        return acum + item.price;
-        }, 0);
-      }
-});
+//   var OrderModel = Backbone.Model.extend({
+//       idAttribute: 'objectId',
+//       defaults: function(attributes){
+//         attributes = attributes || {};
+//         return _.defaults(attributes, {
+//           items: []
+//        });
+//       },
+//
+//       addItem: function(item){
+//         this.set('items', this.get('items').concat([item.toJSON()]));
+//       },
+//
+//       totalPrice: function(){
+//         return this.get('items').reduce(function(acum, item) {
+//         return acum + item.price;
+//         }, 0);
+//       }
+// });
 
 
   var MenuItems = Backbone.Collection.extend({
-    tagName: 'ul',
-    className: 'menu-list',
     model: MenuItemModel,
     url: 'https://api.parse.com/1/classes/menuitem',
     parse: function(response){
@@ -46,45 +39,59 @@
     }
   });
 
-  var Orders = Backbone.Collection.extend({
-    model: OrderModel,
-    url: 'http:api.parse.com/1/classes/order',
-    parse: function(response){
-      console.log(response);
-      return response.results;
-    }
-  });
+  // var Orders = Backbone.Collection.extend({
+  //   model: OrderModel,
+  //   url: 'https://api.parse.com/1/classes/order',
+  //   parse: function(response){
+  //     console.log(response);
+  //     return response.results;
+  //   }
+  // });
 
 
 
   //********* Views *********//
 
-  var IndexView = Backbone.View.extend({
+
+  var MenuView = Backbone.View.extend({
+    template: _.template($('#menu-list-template').text()),
+
+    el: '.js-menu-item-list',
+
+    initialize: function(){
+      this.listenTo(this.collection, 'sync', this.render);
+    },
+
+    render: function(){
+      var self = this;
+        // this.$el.empty();
+      this.collection.each(function(MenuItemModel){
+        var menuItemView = new ItemView({model: MenuItemModel});
+        menuItemView.render();
+        self.$el.append(menuItemView.el);
+      });
+    }
+  });
+
+  var ItemView = Backbone.View.extend({
+    tagName: 'li',
     template: _.template($('#menu-list-template').text()),
 
     render: function(){
-      this.$el.html(this.template());
+      this.$el.html(this.template(this.model.toJSON()));
       return this;
     }
   });
 
-  var ItemDetailsView = Backbone.View.extend({
-    template: _.template($('#item-details-template').text()),
+  // var OrderView = Backbone.View.extend({
+  //   template: _.template($('#order-template').text()),
+  //
+  //   render: function(){
+  //     this.$el.html(this.template());
+  //     return this;
+  //   }
+  // });
 
-    render: function(){
-      this.$el.html(this.template());
-      return this;
-    }
-  });
-
-  var OrderView = Backbone.View.extend({
-    template: _.template($('#order-template').text()),
-
-    render: function(){
-      this.$el.html(this.template());
-      return this;
-    }
-  });
 
 
   //********* Router *********//
@@ -98,19 +105,20 @@
 
     initialize: function() {
       this.items = new MenuItems();
+      this.itemsList = new MenuView({collection: this.items});
       this.items.fetch();
 
     },
 
     index: function() {
       // this.items.fetch();
-      this.indexView = new IndexView();
-      this.indexView.render();
-      $('#app-container').html(this.indexView.el);
+      this.menuView = new MenuView();
+      this.menuView.render();
+      // $('#app-container').html(this.indexView.el);
 
-      this.orderView = new OrderView();
-      this.orderView.render();
-      $('#app-container').append(this.orderView.el);
+      // this.orderView = new OrderView();
+      // this.orderView.render();
+      // $('#app-container').append(this.orderView.el);
     },
 
     itemDetails: function() {
@@ -123,6 +131,7 @@
       $('#app-container').append(this.orderView.el);
     }
   });
+
 
   //******** Configuration *********//
 

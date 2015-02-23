@@ -14,17 +14,12 @@
 <h1><img src="images/methodical.png" alt="logo"></h1>
 <h2>Our Pick-Up Menu</h2>
 
-<div id="app-container"></div>
+<div id="app-container">
+  <ul class="js-menu-item-list"></ul>
+</div>
 
 <script type="text/template" id="menu-list-template">
-<div class="js-menu-list">
-<ul class="js-menu-item-list">
-  <li>yummy food 1</li>
-  <li>yummy food 2</li>
-  <li>yummy food 3</li>
-  <li>yummy food 4</li>
-</ul>
-</div>
+  <%= name %>
 </script>
 
 <script type="text/template" id="item-details-template">
