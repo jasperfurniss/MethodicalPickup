@@ -105,7 +105,9 @@
 
     initialize: function() {
       this.items = new MenuItems();
-      this.itemsList = new MenuView({collection: this.items});
+      this.itemsList = new MenuView({
+        collection: this.items
+      });
       this.items.fetch();
 
     },
