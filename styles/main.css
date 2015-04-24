@@ -1,35 +1,111 @@
 body {
-  font-family: 'sorts-mill-goudy';
-  font-size: 1.75em;
+  font-family: 'Oswald';
+  font-size: 1.3em;
+  font-spacing: 1px;
   background-color: #23232D;
   color: #BBA57B;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
+
+li {
+  text-decoration: none;
+  list-style-type: none; }
+
+a {
+  text-decoration: none;
+  color: #BBA57B; }
+
+a:visited {
+  text-decoration: none;
+  color: #BBA57B; }
+
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  opacity: .6;
+  font-size: 105%; }
+
+a:active {
+  text-decoration: none; }
+
+h1 {
+  text-align: left; }
+
+.logo {
+  height: 50%;
+  width: 50%; }
 
 .js-menu-list {
-  font-family: "sorts-mill-goudy";
-  border: 3px solid #BBA57B; }
+  font-family: "Oswald";
+  border: 3px solid #BBA57B;
+  list-style: none;
+  text-decoration: none;
+  list-style-type: none; }
 
 .js-menu-item-details {
-  font-family: "sorts-mill-goudy";
-  border: 3px dashed #BBA57B; }
+  font-family: "Oswald";
+  /*   border: 3px dashed $secondary-color; */ }
+
+.js-menu-item-list {
+  padding: 0; }
 
 .js-cart {
-  font-family: "sorts-mill-goudy";
+  font-family: "Oswald";
   border: 3px solid #BBA57B; }
 
 img {
   display: flex;
-  flex: 1; }
+  flex: 1;
+  margin: 0 auto; }
 
 button {
-  font-family: "sorts-mill-goudy";
+  font-family: "Oswald";
   outline: none;
   background: #BBA57B;
-  font-family: "sorts-mill-goudy";
+  font-family: "Oswald";
   border: 0;
   color: #23232D;
+  height: 50px;
+  width: 100%;
+  font-size: 1em; }
+
+.details-list {
+  display: flex; }
+
+ul {
+  padding: 0px; }
+
+li {
+  flex: 3; }
+
+.coffee-icons {
+  /*   height: 76px; */
+  height: 100px;
   width: 100px;
-  height: 60px;
-  font-size: .5em; }
+  border-radius: 50%;
+  background-color: #BBA57B;
+  /*  margin-left: -3px; */
+  padding: 12px;
+  /*padding-bottom: 12px;
+    padding-right: 25px;  */ }
+
+.js-menu-item {
+  letter-spacing: 3px;
+  cursor: pointer; }
+
+.add-item-button {
+  border: solid 1px white;
+  margin-left: 3px; }
+
+.price-button {
+  font-size: 1.5em;
+  color: #BBA57B;
+  background-color: #23232D;
+  padding-bottom: 20px; }
+
+.menu-item-name {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.3em;
+  padding-top: 9px; }
 
 /*# sourceMappingURL=main.css.map */

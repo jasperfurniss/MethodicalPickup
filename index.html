@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<!--   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'> -->
-  <script href="use.typekit.net/fww3pmt.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
+  <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="styles/main.css">
   <title>Methodical</title>
 </head>
 <body>
-  <h1>
-    <img src="images/methodical.png" alt="logo">
+
+  <h1 class="logo-header">
+    <img class="logo" src="images/methodical.png" alt="logo">
   </h1>
   <h2>Our Pick-Up Menu</h2>
   <div id="app-container">
@@ -18,18 +18,20 @@
   </div>
 
   <script type="text/template" id="menu-list-template">
-    <a href='#menuitem/<%= name %>'>
-      <%=name %>
-    </a>
+    <li><img class="js-menu-item coffee-icons" src="<%= image.url %>"></li>
+    <div class="js-menu-item-details"></div>
   </script>
 
   <script type="text/template" id="item-details-template">
-    <div class="js-menu-item-details">
-      <p><%= details></p>
-      <form>
-        <button>Add Item</button>
-      </form>
+    <ul class="details-list">
+
+      <li class="menu-item-name"><%= name %></li>
+    </ul>
+    <div>
+      <li><form><button class="add-item-button">Add Item</button></form></li>
+      <li><button class="price-button">$<%= price %></button></li>
     </div>
+
   </script>
 
   <script type="text/template" id="order-template">

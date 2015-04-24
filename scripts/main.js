@@ -1,12 +1,14 @@
 (function() {
   'use strict';
   window.App = window.App || {};
+  App.vent = _.extend({}, Backbone.Events);
+
 
 
   //********* Models & Collections *********//
 
   var MenuItemModel = Backbone.Model.extend({
-      idAttribute: 'objectId',
+    idAttribute: 'objectId',
   });
 
 //   var OrderModel = Backbone.Model.extend({
@@ -29,7 +31,6 @@
 //       }
 // });
 
-
   var MenuItems = Backbone.Collection.extend({
     model: MenuItemModel,
     url: 'https://api.parse.com/1/classes/menuitem',
@@ -47,6 +48,7 @@
   //     return response.results;
   //   }
   // });
+
 
 
 
@@ -74,13 +76,37 @@
   });
 
   var ItemView = Backbone.View.extend({
-    tagName: 'li',
     template: _.template($('#menu-list-template').text()),
+
+    tagName: 'p',
+
+    events: {
+      'click .js-menu-item': 'renderDetails'
+    },
+
+    renderDetails: function(e) {
+      e.preventDefault();
+      var itemDetailsView = new ItemDetailsView({model: this.model});
+      itemDetailsView.render();
+      App.vent.trigger('hideDetails');
+      this.$('.js-menu-item-details').html(itemDetailsView.el);
+
+    },
+
 
     render: function(){
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     }
+  });
+
+  var ItemDetailsView = Backbone.View.extend({
+    template: _.template($('#item-details-template').text()),
+
+    render: function(){
+      this.$el.html(this.template(this.model.toJSON()));
+      return this;
+      }
   });
 
   // var OrderView = Backbone.View.extend({
@@ -94,22 +120,23 @@
 
 
 
+
+
   //********* Router *********//
 
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'index',
-      'menuitem/:name': 'itemDetails'
-
+      'menuitem/:menuitem': 'itemDetails'
     },
 
     initialize: function() {
       this.items = new MenuItems();
-      this.itemsList = new MenuView({
-        collection: this.items
-      });
+      this.itemsList = new MenuView({collection: this.items});
       this.items.fetch();
-
+      App.vent.on('hideDetails', function(){
+        $('.js-menu-item-details').empty();
+      });
     },
 
     index: function() {
@@ -121,11 +148,13 @@
       this.currentView.render();
       $('#app-container').html(this.currentView.el);
 
-      this.orderView = new OrderView();
-      this.orderView.render();
-      $('#app-container').append(this.orderView.el);
+      // this.orderView = new OrderView();
+      // this.orderView.render();
+      // $('#app-container').append(this.orderView.el);
     }
   });
+
+
 
 
   //******** Configuration *********//
@@ -136,6 +165,7 @@
    "X-Parse-REST-API-Key": "Qy74EWEXW8jnnwu7IR47crQxm8UwVYChlG5iENEY"
  }
 });
+
 
 
   //******** Start Your Engines! *********//
