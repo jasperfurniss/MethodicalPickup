@@ -15,6 +15,66 @@ body {
   text-align: center;
 }
 
+@media screen and (min-width: 376px) {
+  body {
+    overflow: hidden;
+  }
+
+  body:after {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: auto;
+    left: auto;
+    width: 432px;
+    height: 882px;
+    -webkit-transform: translate3d(50%, -50%, 0);
+    -moz-transform: translate3d(50%, -50%, 0);
+    -ms-transform: translate3d(50%, -50%, 0);
+    -o-transform: translate3d(50%, -50%, 0);
+    transform: translate3d(50%, -50%, 0);
+    background-image: url('../images/chrome-iphone6-432x882@2x.jpg');
+    content: '';
+    display: block;
+    background-size: contain;
+    z-index: -1;
+  }
+
+  body #container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 100%;
+    -webkit-transform: translate3d(0, -50%, 0);
+    -moz-transform: translate3d(0, -50%, 0);
+    -ms-transform: translate3d(0, -50%, 0);
+    -o-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    max-width: 375px;
+    max-height: 667px;
+    margin: 0 auto;
+  }
+}
+
+body {
+  background: #ffffff;
+}
+
+#container {
+  background-color: #FBFBFB;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
 li {
   text-decoration: none;
   list-style-type: none;
@@ -42,9 +102,7 @@ a:active {
   text-decoration: none;
 }
 
-h1 {
-  text-align: left;
-}
+
 
 .logo {
   height: 50%;

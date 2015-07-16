@@ -9,9 +9,9 @@
   <title>Methodical</title>
 </head>
 <body>
-
+<div id="container" class="content-scrollable">
   <h1 class="logo-header">
-    <img class="logo" src="images/methodical.png" alt="logo">
+    <img class="logo" src="images/method.png" alt="logo">
   </h1>
   <h2>Our Pick-Up Menu</h2>
   <div id="app-container">
@@ -25,14 +25,12 @@
 
   <script type="text/template" id="item-details-template">
     <ul class="details-list">
-
       <li class="menu-item-name"><%= name %></li>
     </ul>
     <div>
       <li><form><button class="add-item-button">Add Item</button></form></li>
       <li><button class="price-button">$<%= price %></button></li>
     </div>
-
   </script>
 
   <script type="text/template" id="order-template">
@@ -52,5 +50,6 @@
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/backbone/backbone.js"></script>
   <script src="scripts/main.js"></script>
+  </div>
 </body>
 </html>
